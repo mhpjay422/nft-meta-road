@@ -12,10 +12,10 @@ module.exports = {
       url: "https://rpc-mumbai.matic.today",
       accounts: [privateKey]
     }, 
-    mainnet: {
-      // add url and accounts
-      // add environment variables for project url
-    }
+    // mainnet: {
+    //   add url and accounts
+    //   add environment variables for project url
+    // }
   },
   solidity: {
     version: "0.8.4",

@@ -1,5 +1,3 @@
-const { ethers } = require("ethers");
-
 describe("NFTMarket", function () {
   it("Should create and execute market sales", async function () {
     const Market = await ethers.getContractFactory("NFTMarket")
@@ -26,5 +24,9 @@ describe("NFTMarket", function () {
     const [_, buyerAddress] = await ethers.getSigners() 
 
     await market.connect(buyerAddress).createMarketSale(nftContractAddress, 1, { value: auctionPrice})
+
+    items = await market.fetchMarketItems()
+
+    console.log('items: ', items)
   });
 });

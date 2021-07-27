@@ -19,4 +19,17 @@ export default function CreateItem() {
     description: "",
   });
   const router = useRouter();
+
+  async function onChange(e) {
+    const file = e.target.files[0];
+    try {
+      const added = await client.add(file, {
+        progress: (prog) => console.log(`received: ${prog}`),
+      });
+      const url = `https://ipfs.infura.io/ipfs/${added.path}`;
+      setFileUrl(url);
+    } catch (error) {
+      console.log("Error uploading file: ", error);
+    }
+  }
 }

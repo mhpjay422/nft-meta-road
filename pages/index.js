@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { ethers } from "ethers";
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -70,7 +71,7 @@ export default function Home() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-4">
           {nfts.map((nft, i) => (
             <div key={i} className="border shadow rounded-xl overflow-hidden">
-              <Image src={nft.image} alt="picture" />
+              <img src={nft.image} alt="picture" />
               <div className="p-4">
                 <p
                   style={{ height: "64px" }}

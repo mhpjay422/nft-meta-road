@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { useState } from "react";
 import { ethers } from "ethers";
 import { create as ipfsHttpClient } from "ipfs-http-client";
@@ -102,7 +103,7 @@ export default function CreateItem() {
         />
         <input type="file" name="Asset" className="my-4" onChange={onChange} />
         {fileUrl && (
-          <Image
+          <img
             className="rounded mt-4"
             width="350"
             src={fileUrl}

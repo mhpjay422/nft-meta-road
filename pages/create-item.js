@@ -2,7 +2,7 @@ import { useState } from "react";
 import { ethers } from "ethers";
 import { create as ipfsHttpClient } from "ipfs-http-client";
 import { useRouter } from "next/router";
-import { Web3Modal } from "web3modal";
+import Web3Modal from "web3modal";
 
 const client = ipfsHttpClient("https://ipfs.infura.io:5001/api/v0");
 
@@ -102,7 +102,12 @@ export default function CreateItem() {
         />
         <input type="file" name="Asset" className="my-4" onChange={onChange} />
         {fileUrl && (
-          <image className="rounded mt-4" width="350" src={fileUrl} />
+          <Image
+            className="rounded mt-4"
+            width="350"
+            src={fileUrl}
+            alt="picture"
+          />
         )}
         <button
           onClick={createMarket}

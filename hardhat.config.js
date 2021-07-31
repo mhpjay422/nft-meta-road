@@ -3,6 +3,8 @@ const fs = require("fs");
 const privateKey =
   fs.readFileSync(".secret").toString().trim() || "01234567890123456789";
 
+console.log(privateKey);
+
 module.exports = {
   defaultNetwork: "hardhat",
   networks: {
@@ -10,7 +12,7 @@ module.exports = {
       chainId: 1337,
     },
     mumbai: {
-      url: "https://rpc-mainnet.maticvigil.com",
+      url: "https://matic-mumbai.chainstacklabs.com",
       accounts: [privateKey],
     },
   },

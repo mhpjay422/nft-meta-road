@@ -16,6 +16,13 @@ function MyApp({ Component, pageProps }) {
   const [image, setImage] = useState("");
   const [loaded, setLoaded] = useState(false);
 
+  async function connect() {
+    const addresses = await window.ethereum.request({
+      method: "eth_requestAccounts",
+    });
+    return addresses;
+  }
+
   return (
     <div>
       <nav className="border-b p-6">

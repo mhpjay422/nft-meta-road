@@ -12,6 +12,10 @@ import { IDX } from "@ceramicstudio/idx";
 const endpoint = "https://ceramic-clay.3boxlabs.com";
 
 function MyApp({ Component, pageProps }) {
+  const [name, setName] = useState("");
+  const [image, setImage] = useState("");
+  const [loaded, setLoaded] = useState(false);
+
   return (
     <div>
       <nav className="border-b p-6">

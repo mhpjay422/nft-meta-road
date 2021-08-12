@@ -1,5 +1,15 @@
 import "../styles/globals.css";
 import Link from "next/link";
+import { useState } from "react";
+
+import CeramicClient from "@ceramicnetwork/http-client";
+import ThreeIdResolver from "@ceramicnetwork/3id-did-resolver";
+
+import { EthereumAuthProvider, ThreeIdConnect } from "@3id/connect";
+import { DID } from "dids";
+import { IDX } from "@ceramicstudio/idx";
+
+const endpoint = "https://ceramic-clay.3boxlabs.com";
 
 function MyApp({ Component, pageProps }) {
   return (

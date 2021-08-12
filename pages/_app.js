@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/alt-text */
+/* eslint-disable @next/next/no-img-element */
 import "../styles/globals.css";
 import Link from "next/link";
 import { useState } from "react";
@@ -70,7 +72,7 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <div>
-      <nav className="border-b p-6">
+      <nav className="flex flex-row border-b p-6 justify-between">
         <div>
           <p className="text-4xl font-bold">Metaroad Marketplace</p>
           <div className="flex mt-8">
@@ -88,8 +90,38 @@ function MyApp({ Component, pageProps }) {
             </Link>
           </div>
         </div>
+        <div className="flex flex-row mt-6">
+          {name && <h3 className="mr-4 text-4xl">Hello, {name}</h3>}
+          {!image && !name && loaded && (
+            <h4>No profile, please create one...</h4>
+          )}
+          {image && <img className="w-20 h-14" src={image} />}
+        </div>
         <div>
-          <button onClick={readProfile}>Read Profile</button>
+          <div>
+            <input
+              className="border-2 border-gray-400 rounded-sm"
+              placeholder="Name"
+              onChange={(e) => setName(e.target.value)}
+            />
+            <input
+              className="border-2 border-gray-400 rounded-sm ml-1 mr-1"
+              placeholder="Profile Image Url"
+              onChange={(e) => setImage(e.target.value)}
+            />
+            <button
+              onClick={readProfile}
+              className="bg-blue-400 text-white border-2 border-blue-400 ml-1 mr-1 shadow-xl rounded-lg"
+            >
+              <p className="m-1 ml-2 mr-2">Read Profile</p>
+            </button>
+            <button
+              onClick={updateProfile}
+              className="bg-blue-400 text-white border-2 border-blue-400 ml-1 mr-1 shadow-xl rounded-lg"
+            >
+              <p className="m-1 ml-2 mr-2">Set Profile</p>
+            </button>
+          </div>
         </div>
       </nav>
       <Component {...pageProps} />

@@ -3,8 +3,6 @@ const fs = require("fs");
 const privateKey =
   fs.readFileSync(".secret").toString().trim() || "01234567890123456789";
 
-console.log(privateKey);
-
 module.exports = {
   defaultNetwork: "hardhat",
   networks: {

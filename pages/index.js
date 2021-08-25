@@ -16,10 +16,10 @@ export default function Home() {
     loadNFTs();
   }, []);
   async function loadNFTs() {
-    const provider = new ethers.providers.JsonRpcProvider();
-    // const provider = new ethers.providers.JsonRpcProvider(
-    //   "https://matic-mumbai.chainstacklabs.com"
-    // );
+    // const provider = new ethers.providers.JsonRpcProvider();
+    const provider = new ethers.providers.JsonRpcProvider(
+      "https://polygon-mumbai.infura.io/v3/b10ee952e53944bda93d5ec291b03594"
+    );
     // for mumbai testnet
 
     const tokenContract = new ethers.Contract(nftaddress, NFT.abi, provider);

@@ -22,7 +22,7 @@ export default function CreateItem() {
   });
   const router = useRouter();
 
-  async function onChange(e) {
+  async function onChangeFunc(e) {
     const file = e.target.files[0];
     try {
       const added = await client.add(file, {
@@ -726,7 +726,12 @@ export default function CreateItem() {
             updateFormInput({ ...formInput, price: e.target.value })
           }
         />
-        <input type="file" name="Asset" className="my-4" onChange={onChange} />
+        <input
+          type="file"
+          name="Asset"
+          className="my-4"
+          onChange={onChangeFunc}
+        />
         {fileUrl && (
           <img
             className="rounded mt-4"

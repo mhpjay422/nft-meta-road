@@ -36,8 +36,8 @@ yarn-error.log*
 node_modules
 
 #Hardhat files
-cache
-artifacts
+/cache/
+/artifacts/
 
 .secret
 

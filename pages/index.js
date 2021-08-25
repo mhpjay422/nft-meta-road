@@ -12,6 +12,7 @@ import { nftaddress, nftmarketaddress } from "../config.js";
 export default function Home() {
   const [nfts, setNfts] = useState([]);
   const [loadingState, setLoadingState] = useState("not-loaded");
+
   const marketAbi = [
     {
       inputs: [],

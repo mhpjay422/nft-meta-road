@@ -651,7 +651,7 @@ export default function Home() {
     const tokenContract = new ethers.Contract(nftaddress, abi, provider);
     const marketContract = new ethers.Contract(
       nftmarketaddress,
-      Market.abi,
+      marketAbi,
       provider
     );
     const data = await marketContract.fetchMarketItems();

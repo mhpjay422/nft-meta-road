@@ -88,6 +88,9 @@ function MyApp({ Component, pageProps }) {
             <Link href="/creator-dashboard">
               <a className="mr-8 text-purple-500">Creator Dashboard</a>
             </Link>
+            <Link href="/generate-art">
+              <a className="mr-8 text-purple-500">Generate Art</a>
+            </Link>
           </div>
         </div>
         <div className="flex flex-row mt-6">

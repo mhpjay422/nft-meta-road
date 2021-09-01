@@ -25,6 +25,7 @@ var document = window.document;
 var h1 = document.querySelector("h1");
 console.log(h1.innerHTML);
 console.log(h1 instanceof Element);
+console.log("deployed");
 
 function MyApp({ Component, pageProps }) {
   const [name, setName] = useState("");

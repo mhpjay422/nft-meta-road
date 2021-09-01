@@ -14,6 +14,8 @@ import { IDX } from "@ceramicstudio/idx";
 
 const endpoint = "https://ceramic-clay.3boxlabs.com";
 
+import dynamic from "next/dynamic";
+
 var domino = require("domino");
 var Element = domino.impl.Element; // etc
 
@@ -84,7 +86,7 @@ function MyApp({ Component, pageProps }) {
     console.log("Profile updated!");
   }
 
-  const p5Script = () => {
+  const p5Script = dynamic(() => {
     if (window) {
       return (
         <Script
@@ -93,7 +95,7 @@ function MyApp({ Component, pageProps }) {
         ></Script>
       );
     }
-  };
+  });
 
   return (
     <div>

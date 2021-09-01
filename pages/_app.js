@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable @next/next/no-img-element */
+import Script from "next/script";
 import "../styles/globals.css";
 import Link from "next/link";
 import { useState } from "react";
@@ -12,6 +13,18 @@ import { DID } from "dids";
 import { IDX } from "@ceramicstudio/idx";
 
 const endpoint = "https://ceramic-clay.3boxlabs.com";
+
+var domino = require("domino");
+var Element = domino.impl.Element; // etc
+
+var window = domino.createWindow("<h1>Hello world</h1>", "http://example.com");
+var document = window.document;
+
+// alternatively: document = domino.createDocument(htmlString, true)
+
+var h1 = document.querySelector("h1");
+console.log(h1.innerHTML);
+console.log(h1 instanceof Element);
 
 function MyApp({ Component, pageProps }) {
   const [name, setName] = useState("");
@@ -72,6 +85,12 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <div>
+      <head>
+        <Script
+          src="https://www.unpkg.com/p5@1.3.1/lib/p5.min.js"
+          rel="import"
+        ></Script>
+      </head>
       <nav className="flex flex-row border-b p-6 justify-between">
         <div>
           <p className="text-4xl font-bold">Metaroad Marketplace</p>

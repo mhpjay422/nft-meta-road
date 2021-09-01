@@ -84,14 +84,20 @@ function MyApp({ Component, pageProps }) {
     console.log("Profile updated!");
   }
 
-  return (
-    <div>
-      <head>
+  const p5Script = () => {
+    if (window) {
+      return (
         <Script
           src="https://www.unpkg.com/p5@1.3.1/lib/p5.min.js"
           rel="import"
         ></Script>
-      </head>
+      );
+    }
+  };
+
+  return (
+    <div>
+      <head>{p5Script}</head>
       <nav className="flex flex-row border-b p-6 justify-between">
         <div>
           <p className="text-4xl font-bold">Metaroad Marketplace</p>

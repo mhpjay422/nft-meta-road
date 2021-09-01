@@ -12,6 +12,16 @@ import { nftaddress, nftmarketaddress } from "../config.js";
 import { abi } from "../abi/abi.js";
 import { marketAbi } from "../abi/marketAbi.js";
 
+const domino = require("domino");
+import { readFileSync } from "fs";
+const DIST_FOLDER = join(process.cwd(), "dist");
+const template = readFileSync(
+  join(DIST_FOLDER, "browser", "index.html")
+).toString();
+const winObj = domino.createWindow(template);
+global["window"] = winObj;
+global["document"] = winObj.document;
+
 export default function Home() {
   const [nfts, setNfts] = useState([]);
   const [loadingState, setLoadingState] = useState("not-loaded");

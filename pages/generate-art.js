@@ -1,10 +1,13 @@
-import P5Wrapper from "react-p5-wrapper";
-import sketch from "../sketch";
+import dynamic from "next/dynamic";
+
+const DynamicComponentWithNoSSR = dynamic(() => import("../p5component.js"), {
+  ssr: false,
+});
 
 function GenerateArt(p) {
   return (
     <div>
-      <P5Wrapper sketch={sketch} />
+      <DynamicComponentWithNoSSR />
     </div>
   );
 }

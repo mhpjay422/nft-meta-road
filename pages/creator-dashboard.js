@@ -62,13 +62,19 @@ export default function CreatorDashboard() {
     return <h1 className="py-10 px-20 text-3xl">No assets created</h1>;
 
   return (
-    <div>
-      <div className="p-4">
+    <div className="flex flex-col content-around pl-32">
+      <div className="flex flex-col p-4 ">
         <h2 className="text-2xl py-2">Items Created</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-4">
+        <div className="items-center grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-4 pb-10">
           {nfts.map((nft, i) => (
-            <div key={i} className="border shadow rounded-xl overflow-hidden">
-              <img src={nft.image} className="rounded" />
+            <div
+              key={i}
+              className="border shadow rounded-xl overflow-hidden w-3/4"
+            >
+              <img
+                src={nft.image}
+                className="rounded max-h-48 w-max object-scale-down border-2 solid"
+              />
               <div className="p-4 bg-black">
                 <p className="text-2xl font-bold text-white">
                   Price - {nft.price} Eth
@@ -86,9 +92,12 @@ export default function CreatorDashboard() {
               {sold.map((nft, i) => (
                 <div
                   key={i}
-                  className="border shadow rounded-xl overflow-hidden"
+                  className="border shadow rounded-xl overflow-hidden w-3/4"
                 >
-                  <img src={nft.image} className="rounded" />
+                  <img
+                    src={nft.image}
+                    className="rounded max-h-48 w-max object-scale-down border-b-2 solid"
+                  />
                   <div className="p-4 bg-black">
                     <p className="text-2xl font-bold text-white">
                       Price - {nft.price} Eth

@@ -129,6 +129,11 @@ function MyApp({ Component, pageProps }) {
         </div>
       </nav>
       <Component {...pageProps} />
+      <footer className="h-28 min-h-full border-2 solid mt-10 flex flex-row ml-64 mr-64">
+        <div className="font-sans text-gray-800 align-middle flex self-center">
+          © 2021 Metaroad Marketplace, Inc. All rights reserved
+        </div>
+      </footer>
     </div>
   );
 }

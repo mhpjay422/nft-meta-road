@@ -72,7 +72,7 @@ function MyApp({ Component, pageProps }) {
   }
 
   return (
-    <div>
+    <div className="min-h-full grid">
       <nav className="flex flex-row border-b p-6 justify-between">
         <div>
           <p className="text-4xl font-bold">Metaroad Marketplace</p>
@@ -129,9 +129,30 @@ function MyApp({ Component, pageProps }) {
         </div>
       </nav>
       <Component {...pageProps} />
-      <footer className="h-28 min-h-full border-2 solid mt-10 flex flex-row ml-64 mr-64">
+      <footer className="h-28 min-h-full border-2 solid mt-10 flex flex-row ml-40 mr-40 justify-between">
         <div className="font-sans text-gray-800 align-middle flex self-center">
           © 2021 Metaroad Marketplace, Inc. All rights reserved
+        </div>
+        <div className="flex align-middle text-blue-700 no-underline">
+          {/* <Link className="personal-site" href="http://jasongong.eth">
+            <div className="personal-div"> Personal Site</div>
+          </Link>
+          */}
+          <Link
+            href="https://www.linkedin.com/in/jason-gong-79772b126/"
+            passHref
+          >
+            <img
+              className="h-10 w-10 self-center flex cursor-pointer mr-14"
+              src="linked.png"
+            ></img>
+          </Link>
+          <Link href="https://github.com/mhpjay422" passHref>
+            <img
+              className="h-10 w-10 self-center flex cursor-pointer mr-14"
+              src="github2.png"
+            ></img>
+          </Link>
         </div>
       </footer>
     </div>

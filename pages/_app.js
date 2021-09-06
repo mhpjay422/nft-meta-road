@@ -131,30 +131,28 @@ function MyApp({ Component, pageProps }) {
         </nav>
         <Component {...pageProps} />
       </div>
-      <footer className="h-28 border-2 solid mt-10 flex flex-row ml-40 mr-40 justify-between">
-        <div className="font-sans text-gray-800 align-middle flex self-center">
-          © 2021 Metaroad Marketplace, Inc. All rights reserved
-        </div>
-        <div className="flex align-middle text-blue-700 no-underline">
-          {/* <Link className="personal-site" href="http://jasongong.eth">
-            <div className="personal-div"> Personal Site</div>
-          </Link>
-          */}
-          <Link
-            href="https://www.linkedin.com/in/jason-gong-79772b126/"
-            passHref
-          >
-            <img
-              className="h-10 w-10 self-center flex cursor-pointer mr-14"
-              src="linked.png"
-            ></img>
-          </Link>
-          <Link href="https://github.com/mhpjay422" passHref>
-            <img
-              className="h-10 w-10 self-center flex cursor-pointer mr-14"
-              src="github2.png"
-            ></img>
-          </Link>
+      <footer className="h-28 border-t-2 solid mt-10 ">
+        <div className="ml-40 mr-40 justify-between flex flex-row pt-7">
+          <div className="font-sans text-gray-800 align-middle flex self-center">
+            © 2021 Metaroad Marketplace, Inc. All rights reserved
+          </div>
+          <div className="flex align-middle text-blue-700 no-underline">
+            <Link
+              href="https://www.linkedin.com/in/jason-gong-79772b126/"
+              passHref
+            >
+              <img
+                className="h-10 w-10 self-center flex cursor-pointer mr-20"
+                src="linked.png"
+              ></img>
+            </Link>
+            <Link href="https://github.com/mhpjay422" passHref>
+              <img
+                className="h-10 w-10 self-center flex cursor-pointer"
+                src="github2.png"
+              ></img>
+            </Link>
+          </div>
         </div>
       </footer>
     </div>

@@ -2,7 +2,7 @@ function sketch(p) {
   let rotation = 0;
 
   p.setup = function () {
-    p.createCanvas(1500, 400);
+    p.createCanvas(600, 600);
   };
 
   p.draw = function () {

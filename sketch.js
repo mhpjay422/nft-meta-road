@@ -2,7 +2,11 @@ function sketch(p) {
   let rotation = 0;
 
   p.setup = function () {
-    p.createCanvas(600, 600);
+    let canvas = p.createCanvas(600, 600);
+
+    canvas.parent("canvascontainer");
+    let saveButton = p.select("#saveButton");
+    saveButton.mousePressed(saveDrawing);
   };
 
   p.draw = function () {
@@ -13,6 +17,10 @@ function sketch(p) {
     }
     p.ellipse(p.mouseX, p.mouseY, 100, 100);
   };
+
+  function saveDrawing() {
+    console.log("hello");
+  }
 }
 
 export default sketch;

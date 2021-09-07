@@ -19,7 +19,7 @@ function sketch(p) {
   };
 
   function saveDrawing() {
-    // p.save();
+    p.save();
   }
 }
 

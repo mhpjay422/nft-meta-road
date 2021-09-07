@@ -43,13 +43,21 @@ export default function P5component() {
       <div className="flex align-middle justify-around bg-black border-t-2 border-b-2">
         <div id="canvascontainer" className="bg-white">
           <button
-            id="saveButton"
+            id="MintButton"
             type="file"
             name="Asset"
             onClick={onChangeFunc}
-            className="absolute h-20 w-40 bg-blue-500 left-0"
+            className="absolute h-20 w-40 bg-blue-500 right-0"
           >
-            Save Image
+            Mint NFT
+          </button>
+          <button
+            id="saveButton"
+            type="file"
+            name="Asset"
+            className="absolute h-20 w-40 bg-green-500 left-0"
+          >
+            Save NFT
           </button>
           <P5Wrapper sketch={sketch} />
         </div>

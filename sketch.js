@@ -1,4 +1,4 @@
-function sketch(p) {
+const sketch = (p) => {
   let rotation = 0;
 
   p.setup = function () {

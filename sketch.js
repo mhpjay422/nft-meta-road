@@ -1,4 +1,4 @@
-function Sketch(p) {
+function sketch(p) {
   let rotation = 0;
 
   p.setup = function () {
@@ -19,8 +19,8 @@ function Sketch(p) {
   };
 
   function saveDrawing() {
-    p.save();
+    // p.save();
   }
 }
 
-export default Sketch;
+export default sketch;

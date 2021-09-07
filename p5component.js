@@ -15,7 +15,15 @@ import { marketAbi } from "./abi/marketAbi.js";
 import P5Wrapper from "react-p5-wrapper";
 import sketch from "./sketch";
 
-function p5component() {
+export default function P5component() {
+  const [fileUrl, setFileUrl] = useState(null);
+  const [formInput, updateFormInput] = useState({
+    price: "",
+    name: "",
+    description: "",
+  });
+  const router = useRouter();
+
   return (
     <div>
       <div className="h-20 bg-gray-50"></div>
@@ -33,5 +41,3 @@ function p5component() {
     </div>
   );
 }
-
-export default p5component;

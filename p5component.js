@@ -13,7 +13,7 @@ import { nftaddress, nftmarketaddress } from "./config.js";
 import { abi } from "./abi/abi.js";
 import { marketAbi } from "./abi/marketAbi.js";
 import P5Wrapper from "react-p5-wrapper";
-import sketch from "./sketch";
+import Sketch from "./sketch";
 
 export default function P5component() {
   const [fileUrl, setFileUrl] = useState(null);
@@ -31,11 +31,13 @@ export default function P5component() {
         <div id="canvascontainer" className="bg-white">
           <button
             id="saveButton"
+            type="file"
+            name="Asset"
             className="absolute h-20 w-40 bg-blue-500 left-0"
           >
             Save Image
           </button>
-          <P5Wrapper sketch={sketch} />
+          <P5Wrapper sketch={Sketch} />
         </div>
       </div>
     </div>

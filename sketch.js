@@ -1,4 +1,4 @@
-const sketch = (p) => {
+function Sketch(p) {
   let rotation = 0;
 
   p.setup = function () {
@@ -19,8 +19,8 @@ const sketch = (p) => {
   };
 
   function saveDrawing() {
-    console.log("hello");
+    p.save();
   }
 }
 
-export default sketch;
+export default Sketch;

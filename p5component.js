@@ -79,6 +79,14 @@ export default function P5component() {
           </button>
           <P5Wrapper sketch={sketch} />
         </div>
+        <div className="w-1/4 flex flex-col pb-12">
+          <button
+            onClick={createMarket}
+            className="font-bold mt-4 bg-pink-500 text-white rounded p-4 shadow-lg"
+          >
+            Create Digital Asset
+          </button>
+        </div>
       </div>
     </div>
   );

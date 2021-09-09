@@ -89,7 +89,7 @@ export default function P5component() {
             id="MintButton"
             type="file"
             name="Asset"
-            onClick={onChangeFunc}
+            onClick={createMarket}
             className="absolute h-20 w-40 bg-blue-500 right-0"
           >
             Mint NFT
@@ -104,7 +104,28 @@ export default function P5component() {
           </button>
           <P5Wrapper sketch={sketch} />
         </div>
-        <div className="w-1/4 flex flex-col pb-12">
+        <div className="w-1/4 flex flex-col pb-12 mt-16">
+          <input
+            placeholder="Asset Name"
+            className="mt-8 border rounded p-4"
+            onChange={(e) =>
+              updateFormInput({ ...formInput, name: e.target.value })
+            }
+          />
+          <textarea
+            placeholder="Asset Description"
+            className="mt-2 border rounded p-4"
+            onChange={(e) =>
+              updateFormInput({ ...formInput, description: e.target.value })
+            }
+          />
+          <input
+            placeholder="Asset Price in Eth"
+            className="mt-2 border rounded p-4"
+            onChange={(e) =>
+              updateFormInput({ ...formInput, price: e.target.value })
+            }
+          />
           <button
             onClick={createMarket}
             className="font-bold mt-4 bg-pink-500 text-white rounded p-4 shadow-lg"

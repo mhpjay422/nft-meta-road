@@ -25,7 +25,7 @@ export default function P5component() {
   const router = useRouter();
 
   async function onChangeFunc(e) {
-    const file = e.target.parentElement.lastElementChild.toDataURL("image/png");
+    const file = e.target.files[0];
     try {
       const added = await client.add(file, {
         progress: (prog) => console.log(`received: ${prog}`),
@@ -86,15 +86,6 @@ export default function P5component() {
       <div className="flex align-middle justify-around bg-black border-t-2 border-b-2">
         <div id="canvascontainer" className="bg-white">
           <button
-            id="MintButton"
-            type="file"
-            name="Asset"
-            onClick={createMarket}
-            className="absolute h-20 w-40 bg-blue-500 right-0"
-          >
-            Mint NFT
-          </button>
-          <button
             id="saveButton"
             type="file"
             name="Asset"
@@ -126,6 +117,21 @@ export default function P5component() {
               updateFormInput({ ...formInput, price: e.target.value })
             }
           />
+          <input
+            id="MintButton"
+            type="file"
+            name="Asset"
+            onChange={onChangeFunc}
+            className="mt-2"
+          />
+          {fileUrl && (
+            <img
+              className="rounded mt-4"
+              width="350"
+              src={fileUrl}
+              alt="picture"
+            />
+          )}
           <button
             onClick={createMarket}
             className="font-bold mt-4 bg-pink-500 text-white rounded p-4 shadow-lg"

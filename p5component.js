@@ -37,6 +37,24 @@ export default function P5component() {
     }
   }
 
+  async function createMarket() {
+    const { name, description, price } = formInput;
+    if (!name || !description || !price || !fileUrl) return;
+    const data = JSON.stringify({
+      name,
+      description,
+      image: fileUrl,
+    });
+    try {
+      const added = await client.add(data);
+      const url = `https://ipfs.infura.io/ipfs/${added.path}`;
+
+      createSale(url);
+    } catch (error) {
+      console.log("Error uploading file: ", error);
+    }
+  }
+
   return (
     <div>
       <div className="h-20 bg-gray-50"></div>

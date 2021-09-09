@@ -55,6 +55,31 @@ export default function P5component() {
     }
   }
 
+  async function createSale(url) {
+    const web3Modal = new Web3Modal();
+    const connection = await web3Modal.connect();
+    const provider = new ethers.providers.Web3Provider(connection);
+    const signer = provider.getSigner();
+
+    let contract = new ethers.Contract(nftaddress, abi, signer);
+    let transaction = await contract.createToken(url);
+    let tx = await transaction.wait();
+    let event = tx.events[0];
+    let value = event.args[2];
+    let tokenId = value.toNumber();
+    const price = ethers.utils.parseUnits(formInput.price, "ether");
+
+    contract = new ethers.Contract(nftmarketaddress, marketAbi, signer);
+    let listingPrice = await contract.getListingPrice();
+    listingPrice = listingPrice.toString();
+
+    transaction = await contract.createMarketItem(nftaddress, tokenId, price, {
+      value: listingPrice,
+    });
+    await transaction.wait();
+    router.push("/");
+  }
+
   return (
     <div>
       <div className="h-20 bg-gray-50"></div>

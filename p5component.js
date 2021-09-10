@@ -111,20 +111,21 @@ export default function P5component() {
   }
 
   return (
-    <div>
-      <div className="h-20 bg-gray-50"></div>
+    <div className="h-max-full">
       <div className="flex align-middle justify-around bg-black border-t-2 border-b-2">
-        <form id="canvascontainer" className="bg-white">
-          <button
-            id="saveButton"
-            type="file"
-            name="Asset"
-            className="absolute h-20 w-40 bg-green-500 left-0"
-          >
-            Save NFT
-          </button>
-          <P5Wrapper sketch={sketch} />
-        </form>
+        <button
+          id="saveButton"
+          type="file"
+          name="Asset"
+          className="relative h-20 w-40 bg-green-500 self-center"
+        >
+          Save Image
+        </button>
+        <div className="flex flex-row">
+          <form id="canvascontainer" className="bg-white">
+            <P5Wrapper sketch={sketch} />
+          </form>
+        </div>
         <div className="w-1/4 flex flex-col pb-12 mt-16">
           <input
             placeholder="Asset Name"
@@ -152,15 +153,9 @@ export default function P5component() {
             type="file"
             name="Asset"
             onClick={mintNFT}
-            className="mt-2 h-10 w-40 bg-blue-700"
+            className="mt-2 h-16 w-60 bg-blue-400"
           >
             Mint NFT
-          </button>
-          <button
-            onClick={createMarket}
-            className="font-bold mt-4 bg-pink-500 text-white rounded p-4 shadow-lg"
-          >
-            Create Digital Asset
           </button>
         </div>
       </div>

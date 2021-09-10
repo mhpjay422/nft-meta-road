@@ -16,7 +16,6 @@ import P5Wrapper from "react-p5-wrapper";
 import sketch from "./sketch";
 
 export default function P5component() {
-  const [fileUrl, setFileUrl] = useState(null);
   const [formInput, updateFormInput] = useState({
     price: "",
     name: "",
@@ -24,67 +23,31 @@ export default function P5component() {
   });
   const router = useRouter();
 
-  async function onChangeFunc(e) {
-    const file = e.target.files[0];
+  async function mintNFT() {
+    const canvasURL = document.getElementById("defaultCanvas0").toDataURL();
+    const block = canvasURL.split(";");
+    const contentType = block[0].split(":")[1];
+    const realData = block[1].split(",")[1];
+    const blob = b64toBlob(realData, contentType);
+    const fileUpload = new File([blob], "image.jpeg", {
+      type: blob.type,
+    });
     try {
-      const added = await client.add(file, {
+      const added = await client.add(fileUpload, {
         progress: (prog) => console.log(`received: ${prog}`),
       });
       const url = `https://ipfs.infura.io/ipfs/${added.path}`;
-      setFileUrl(url);
+      createMarket(url);
     } catch (error) {
       console.log("Error uploading file: ", error);
     }
-  }
-
-  async function createMarket() {
-    const { name, description, price } = formInput;
-    if (!name || !description || !price || !fileUrl) return;
-    const data = JSON.stringify({
-      name,
-      description,
-      image: fileUrl,
-    });
-    try {
-      const added = await client.add(data);
-      const url = `https://ipfs.infura.io/ipfs/${added.path}`;
-
-      createSale(url);
-    } catch (error) {
-      console.log("Error uploading file: ", error);
-    }
-  }
-
-  async function createSale(url) {
-    const web3Modal = new Web3Modal();
-    const connection = await web3Modal.connect();
-    const provider = new ethers.providers.Web3Provider(connection);
-    const signer = provider.getSigner();
-
-    let contract = new ethers.Contract(nftaddress, abi, signer);
-    let transaction = await contract.createToken(url);
-    let tx = await transaction.wait();
-    let event = tx.events[0];
-    let value = event.args[2];
-    let tokenId = value.toNumber();
-    const price = ethers.utils.parseUnits(formInput.price, "ether");
-
-    contract = new ethers.Contract(nftmarketaddress, marketAbi, signer);
-    let listingPrice = await contract.getListingPrice();
-    listingPrice = listingPrice.toString();
-
-    transaction = await contract.createMarketItem(nftaddress, tokenId, price, {
-      value: listingPrice,
-    });
-    await transaction.wait();
-    router.push("/");
   }
 
   return (
     <div>
       <div className="h-20 bg-gray-50"></div>
       <div className="flex align-middle justify-around bg-black border-t-2 border-b-2">
-        <div id="canvascontainer" className="bg-white">
+        <form id="canvascontainer" className="bg-white">
           <button
             id="saveButton"
             type="file"
@@ -94,7 +57,7 @@ export default function P5component() {
             Save NFT
           </button>
           <P5Wrapper sketch={sketch} />
-        </div>
+        </form>
         <div className="w-1/4 flex flex-col pb-12 mt-16">
           <input
             placeholder="Asset Name"
@@ -117,21 +80,15 @@ export default function P5component() {
               updateFormInput({ ...formInput, price: e.target.value })
             }
           />
-          <input
+          <button
             id="MintButton"
             type="file"
             name="Asset"
-            onChange={onChangeFunc}
-            className="mt-2"
-          />
-          {fileUrl && (
-            <img
-              className="rounded mt-4"
-              width="350"
-              src={fileUrl}
-              alt="picture"
-            />
-          )}
+            onClick={mintNFT}
+            className="mt-2 h-10 w-40 bg-blue-700"
+          >
+            Mint NFT
+          </button>
           <button
             onClick={createMarket}
             className="font-bold mt-4 bg-pink-500 text-white rounded p-4 shadow-lg"

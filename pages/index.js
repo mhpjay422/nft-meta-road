@@ -77,18 +77,22 @@ export default function Home() {
   return (
     <div className="flex justify-center">
       <div className="px-4" style={{ maxWidth: "1600px" }}>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 pt-4">
           {nfts.map((nft, i) => (
-            <div key={i} className="border shadow rounded-xl overflow-hidden">
+            <div
+              key={i}
+              className="border shadow rounded-xl overflow-hidden min-h-full"
+            >
               <img
                 src={nft.image}
                 alt="picture"
-                className="max-h-48 w-max object-scale-down border-b-2 solid"
+                style={{ height: "192px" }}
+                className="w-max object-cover self-center ml-auto mr-auto"
               />
               <div className="p-4">
                 <p
                   style={{ height: "64px" }}
-                  className="text-2xl font-semibold"
+                  className="text-2xl font-semibold border-t-2 solid"
                 >
                   {nft.name}
                 </p>

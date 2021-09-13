@@ -10,6 +10,11 @@ module.exports = {
     hardhat: {
       chainId: 1337,
     },
+    rinkeby: {
+      url: `https://rinkeby.infura.io/v3/${projectId}`,
+      // url: "https://matic-mumbai.chainstacklabs.com",
+      accounts: [privateKey],
+    },
     mumbai: {
       url: `https://polygon-mumbai.infura.io/v3/${projectId}`,
       // url: "https://matic-mumbai.chainstacklabs.com",

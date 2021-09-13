@@ -80,6 +80,22 @@ function MyApp({ Component, pageProps }) {
     console.log("Profile updated!");
   }
 
+  function checkRinkeby() {
+    return (
+      window.ethereum.chainId == "0x4" &&
+      window.ethereum.selectedAddress != null
+    );
+  }
+
+  async function enableWallet(e) {
+    e.preventDefault();
+    const addresses = await window.ethereum.request({
+      method: "eth_requestAccounts",
+    });
+    await setIsRinkeby(checkRinkeby());
+    return addresses;
+  }
+
   return (
     <div>
       <div className="min-height-footer">
@@ -134,6 +150,19 @@ function MyApp({ Component, pageProps }) {
                 className="bg-blue-400 text-white border-2 border-blue-400 ml-1 mr-1 shadow-xl rounded-lg"
               >
                 <p className="m-1 ml-2 mr-2">Set Profile</p>
+              </button>
+            </div>
+            <div className="flex justify-between">
+              {!isRinkeby && (
+                <p className="self-center text-red-600 font-bold text-xl mr-4">
+                  Please connect wallet to the Rinkeby Testnet
+                </p>
+              )}
+              <button
+                className="h-16 w-52 self-end border-2 border-grey-600 solid ml-auto mt-4 bg-green-600 text-white shadow-xl rounded-xl"
+                onClick={enableWallet}
+              >
+                Connect Wallet
               </button>
             </div>
           </div>

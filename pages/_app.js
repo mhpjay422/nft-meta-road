@@ -4,6 +4,7 @@
 import "../styles/globals.css";
 import Link from "next/link";
 import { useState } from "react";
+import { useEffect } from "react";
 
 import CeramicClient from "@ceramicnetwork/http-client";
 import ThreeIdResolver from "@ceramicnetwork/3id-did-resolver";
@@ -18,6 +19,14 @@ function MyApp({ Component, pageProps }) {
   const [name, setName] = useState("");
   const [image, setImage] = useState("");
   const [loaded, setLoaded] = useState(false);
+  const [isRinkeby, setIsRinkeby] = useState(true);
+
+  useEffect(() => {
+    setIsRinkeby(
+      window.ethereum.chainId == "0x4" &&
+        window.ethereum.selectedAddress != null
+    );
+  }, []);
 
   async function connect() {
     const addresses = await window.ethereum.request({
@@ -102,8 +111,8 @@ function MyApp({ Component, pageProps }) {
             )}
             {image && <img className="w-20 h-14" src={image} />}
           </div>
-          <div>
-            <div>
+          <div className="flex flex-col">
+            <div className="self-end">
               <input
                 className="border-2 border-gray-400 rounded-sm"
                 placeholder="Name"

@@ -4,7 +4,6 @@
 import "../styles/globals.css";
 import Link from "next/link";
 import { useState } from "react";
-import { useEffect } from "react";
 
 import CeramicClient from "@ceramicnetwork/http-client";
 import ThreeIdResolver from "@ceramicnetwork/3id-did-resolver";
@@ -15,18 +14,16 @@ import { IDX } from "@ceramicstudio/idx";
 
 const endpoint = "https://ceramic-clay.3boxlabs.com";
 
+import dynamic from "next/dynamic";
+
+const ConnectComponentWithNoSSR = dynamic(() => import("../connect.js"), {
+  ssr: false,
+});
+
 function MyApp({ Component, pageProps }) {
   const [name, setName] = useState("");
   const [image, setImage] = useState("");
   const [loaded, setLoaded] = useState(false);
-  const [isRinkeby, setIsRinkeby] = useState(true);
-
-  useEffect(() => {
-    setIsRinkeby(
-      window.ethereum.chainId == "0x4" &&
-        window.ethereum.selectedAddress != null
-    );
-  }, []);
 
   async function connect() {
     const addresses = await window.ethereum.request({
@@ -78,22 +75,6 @@ function MyApp({ Component, pageProps }) {
     });
 
     console.log("Profile updated!");
-  }
-
-  function checkRinkeby() {
-    return (
-      window.ethereum.chainId == "0x4" &&
-      window.ethereum.selectedAddress != null
-    );
-  }
-
-  async function enableWallet(e) {
-    e.preventDefault();
-    const addresses = await window.ethereum.request({
-      method: "eth_requestAccounts",
-    });
-    await setIsRinkeby(checkRinkeby());
-    return addresses;
   }
 
   return (
@@ -152,19 +133,7 @@ function MyApp({ Component, pageProps }) {
                 <p className="m-1 ml-2 mr-2">Set Profile</p>
               </button>
             </div>
-            <div className="flex justify-between">
-              {!isRinkeby && (
-                <p className="self-center text-red-600 font-bold text-xl mr-4">
-                  Please connect wallet to the Rinkeby Testnet
-                </p>
-              )}
-              <button
-                className="h-16 w-52 self-end border-2 border-grey-600 solid ml-auto mt-4 bg-green-600 text-white shadow-xl rounded-xl"
-                onClick={enableWallet}
-              >
-                Connect Wallet
-              </button>
-            </div>
+            <ConnectComponentWithNoSSR />
           </div>
         </nav>
         <Component {...pageProps} />
